@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1746a2">
+  <title>Student Management System</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#home" aria-label="Student Management System home">
+        <span class="brand-mark" aria-hidden="true">S</span>
+        <span>Campus<span class="brand-light">Desk</span></span>
+      </a>
+      <span class="topbar-label">STUDENT PORTAL</span>
+    </div>
+  </header>
+
+  <main class="page-shell" id="home">
+    <section class="page-heading" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow">ADMINISTRATION</p>
+        <h1 id="page-title">Student Management System</h1>
+        <p class="page-description">Keep student information organized in one simple place.</p>
+      </div>
+      <div class="total-card" aria-label="Total students">
+        <span class="total-icon" aria-hidden="true">👥</span>
+        <div>
+          <span class="total-label">Total students</span>
+          <strong id="total-count" class="total-count">0</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel form-panel" aria-labelledby="form-title">
+      <div class="panel-heading">
+        <div class="heading-icon" aria-hidden="true">＋</div>
+        <div>
+          <h2 id="form-title">Add a student</h2>
+          <p>Enter the student's details below.</p>
+        </div>
+      </div>
+
+      <form id="student-form" novalidate>
+        <div class="form-grid">
+          <div class="field">
+            <label for="student-name">Student name <span aria-hidden="true">*</span></label>
+            <input id="student-name" name="name" type="text" placeholder="e.g. Alex Johnson" autocomplete="name" required maxlength="80">
+          </div>
+          <div class="field">
+            <label for="roll-number">Roll number <span aria-hidden="true">*</span></label>
+            <input id="roll-number" name="rollNumber" type="text" placeholder="e.g. CS-2026-014" required maxlength="30">
+          </div>
+          <div class="field">
+            <label for="email">Email address <span aria-hidden="true">*</span></label>
+            <input id="email" name="email" type="email" placeholder="student@example.com" autocomplete="email" required maxlength="120">
+          </div>
+          <div class="field">
+            <label for="department">Department <span aria-hidden="true">*</span></label>
+            <input id="department" name="department" type="text" placeholder="e.g. Computer Science" required maxlength="80">
+          </div>
+          <div class="field field-year">
+            <label for="year">Year <span aria-hidden="true">*</span></label>
+            <select id="year" name="year" required>
+              <option value="" disabled selected>Select year</option>
+              <option value="Year 1">Year 1</option>
+              <option value="Year 2">Year 2</option>
+              <option value="Year 3">Year 3</option>
+              <option value="Year 4">Year 4</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-footer">
+          <p class="required-note"><span aria-hidden="true">*</span> All fields are required</p>
+          <button class="button button-primary" type="submit"><span aria-hidden="true">＋</span> Submit student</button>
+        </div>
+      </form>
+      <p id="form-message" class="message" role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="panel records-panel" aria-labelledby="records-title">
+      <div class="records-heading">
+        <div class="panel-heading records-title-group">
+          <div class="heading-icon heading-icon-blue" aria-hidden="true">▤</div>
+          <div>
+            <h2 id="records-title">Student records</h2>
+            <p>View and manage your registered students.</p>
+          </div>
+        </div>
+        <div class="search-wrap">
+          <label class="visually-hidden" for="student-search">Search by student name or roll number</label>
+          <span class="search-icon" aria-hidden="true">⌕</span>
+          <input id="student-search" type="search" placeholder="Search name or roll number..." autocomplete="off">
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Student ID</th>
+              <th scope="col">Student name</th>
+              <th scope="col">Roll number</th>
+              <th scope="col">Email</th>
+              <th scope="col">Department</th>
+              <th scope="col">Year</th>
+              <th scope="col" class="action-heading">Action</th>
+            </tr>
+          </thead>
+          <tbody id="student-list"></tbody>
+        </table>
+      </div>
+      <p id="empty-state" class="empty-state">No student records yet. Add a student using the form above.</p>
+      <p id="search-state" class="empty-state" hidden>No students match your search.</p>
+      <div class="table-footer">
+        <span id="result-count">Showing 0 students</span>
+        <span class="local-note"><span aria-hidden="true">●</span> Saved on this device</span>
+      </div>
+    </section>
+    <p id="announcement" class="visually-hidden" role="status" aria-live="polite"></p>
+    <footer class="page-footer">Student records are stored privately in this browser.</footer>
+  </main>
+</body>
+</html>
